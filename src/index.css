@@ -1,0 +1,254 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", "Segoe UI", sans-serif;
+  --font-display: "Unbounded", "Manrope", sans-serif;
+  --color-paper: #efeae1;
+  --color-cream: #fbf8f3;
+  --color-ink: #1c1915;
+  --color-muted: #5e574e;
+  --color-line: #e3dbd0;
+  --color-pine: #1b3d30;
+  --color-pine-2: #275443;
+  --color-lime: #d6ef6a;
+  --color-act: #9a3412;
+  --color-act-strong: #c4491d;
+  --color-act-soft: #fff1ea;
+  --color-watch: #854d0e;
+  --color-watch-strong: #a16207;
+  --color-watch-soft: #fff6e4;
+  --color-steady: #215c38;
+  --color-steady-soft: #e7f5ec;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(1000px 420px at 0% -10%, rgba(214, 239, 106, 0.28), transparent 55%),
+    radial-gradient(800px 380px at 100% 0%, rgba(27, 61, 48, 0.06), transparent 50%);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: #d6ef6a;
+  color: #1b3d30;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-pine);
+  outline-offset: 2px;
+}
+
+.bg-pine :focus-visible {
+  outline-color: #f6f3ec;
+}
+
+.field:focus,
+.field:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 1.5px var(--color-pine);
+}
+
+summary {
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+.panel {
+  border-radius: 1.25rem;
+  background: var(--color-cream);
+  box-shadow: 0 0 0 1px var(--color-line);
+}
+
+.card {
+  width: 100%;
+  border: 0;
+  border-radius: 1.25rem;
+  background: var(--color-cream);
+  padding: 1rem 1rem 0.9rem;
+  text-align: left;
+  box-shadow: 0 0 0 1px var(--color-line);
+  transition: transform 0.2s ease;
+}
+
+.card[data-band="act"] {
+  box-shadow: inset 3px 0 0 var(--color-act-strong), 0 0 0 1px var(--color-line);
+}
+
+.card[data-band="watch"] {
+  box-shadow: inset 3px 0 0 var(--color-watch-strong), 0 0 0 1px var(--color-line);
+}
+
+.card[data-open="true"] {
+  box-shadow: 0 0 0 2px var(--color-pine);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.field {
+  width: 100%;
+  border: 0;
+  border-radius: 0.85rem;
+  background: #fff;
+  padding: 0.65rem 0.75rem;
+  box-shadow: inset 0 0 0 1px var(--color-line);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: background-color 0.15s ease, transform 0.15s ease, filter 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.btn-primary {
+  background: var(--color-pine);
+  color: #f6f3ec;
+}
+
+.btn-primary:hover {
+  background: var(--color-pine-2);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink);
+  box-shadow: inset 0 0 0 1px var(--color-line);
+}
+
+.btn-ghost:hover {
+  background: #fff;
+}
+
+.rise {
+  animation: rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.bar {
+  transform-origin: left center;
+  animation: grow 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.backdrop {
+  animation: fade 0.2s ease;
+}
+
+.drawer-panel {
+  animation: from-bottom 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ring-value {
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes from-bottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes from-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .drawer-panel {
+    animation-name: from-right;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
